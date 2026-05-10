@@ -4,7 +4,6 @@ import java.util.Comparator;
 
 public class ArvoreAVL<T> extends ArvoreBinaria<T> {
 
-    // Raiz própria da AVL (sobrepõe a da ArvoreBinaria)
     private NoAVL<T> raiz;
     private int quantidade;
 
@@ -14,7 +13,6 @@ public class ArvoreAVL<T> extends ArvoreBinaria<T> {
         this.quantidade = 0;
     }
 
-    // ─── Utilitários de altura ───────────────────────────────
 
     private int alturaNo(NoAVL<T> no) {
         return (no == null) ? -1 : no.getAltura();
@@ -29,15 +27,12 @@ public class ArvoreAVL<T> extends ArvoreBinaria<T> {
         );
     }
 
-    // Fator de balanceamento: altura(esq) - altura(dir)
     private int fatorBalanceamento(NoAVL<T> no) {
         return alturaNo((NoAVL<T>) no.getEsquerda())
              - alturaNo((NoAVL<T>) no.getDireita());
     }
 
-    // ─── Rotações ────────────────────────────────────────────
 
-    // Rotação simples à direita
     private NoAVL<T> rotacionarDireita(NoAVL<T> y) {
         NoAVL<T> x  = (NoAVL<T>) y.getEsquerda();
         NoAVL<T> t2 = (NoAVL<T>) x.getDireita();
@@ -48,10 +43,9 @@ public class ArvoreAVL<T> extends ArvoreBinaria<T> {
         atualizarAltura(y);
         atualizarAltura(x);
 
-        return x; // nova raiz desta subárvore
+        return x; 
     }
 
-    // Rotação simples à esquerda
     private NoAVL<T> rotacionarEsquerda(NoAVL<T> x) {
         NoAVL<T> y  = (NoAVL<T>) x.getDireita();
         NoAVL<T> t2 = (NoAVL<T>) y.getEsquerda();
@@ -62,30 +56,26 @@ public class ArvoreAVL<T> extends ArvoreBinaria<T> {
         atualizarAltura(x);
         atualizarAltura(y);
 
-        return y; // nova raiz desta subárvore
+        return y; 
     }
 
-    // Balanceia um nó após inserção
     private NoAVL<T> balancear(NoAVL<T> no, T valor) {
 
         atualizarAltura(no);
         int fb = fatorBalanceamento(no);
 
-        // Caso Esquerda-Esquerda (rotação simples direita)
         if (fb > 1 &&
             comparador.compare(valor,
                 no.getEsquerda().getValor()) < 0) {
             return rotacionarDireita(no);
         }
 
-        // Caso Direita-Direita (rotação simples esquerda)
         if (fb < -1 &&
             comparador.compare(valor,
                 no.getDireita().getValor()) > 0) {
             return rotacionarEsquerda(no);
         }
 
-        // Caso Esquerda-Direita (rotação dupla)
         if (fb > 1 &&
             comparador.compare(valor,
                 no.getEsquerda().getValor()) > 0) {
@@ -97,7 +87,6 @@ public class ArvoreAVL<T> extends ArvoreBinaria<T> {
             return rotacionarDireita(no);
         }
 
-        // Caso Direita-Esquerda (rotação dupla)
         if (fb < -1 &&
             comparador.compare(valor,
                 no.getDireita().getValor()) < 0) {
@@ -109,10 +98,8 @@ public class ArvoreAVL<T> extends ArvoreBinaria<T> {
             return rotacionarEsquerda(no);
         }
 
-        return no; // já está balanceado
+        return no; 
     }
-
-    // ─── Adicionar (sobrescreve ArvoreBinaria) ───────────────
 
     @Override
     public void adicionar(T novoValor) {
@@ -121,7 +108,6 @@ public class ArvoreAVL<T> extends ArvoreBinaria<T> {
 
     private NoAVL<T> adicionarAVL(NoAVL<T> atual, T valor) {
 
-        // Inserção normal de BST
         if (atual == null) {
             quantidade++;
             return new NoAVL<>(valor);
@@ -138,14 +124,11 @@ public class ArvoreAVL<T> extends ArvoreBinaria<T> {
                 adicionarAVL((NoAVL<T>) atual.getDireita(), valor)
             );
         } else {
-            return atual; // duplicata, ignora
+            return atual; 
         }
 
-        // Após inserir, balanceia o caminho de volta
         return balancear(atual, valor);
     }
-
-    // ─── Sobrescrever métodos que usam raiz ──────────────────
 
     @Override
     public T pesquisar(T valor) {

@@ -9,12 +9,10 @@ public class GeradorBalanceado {
 
     public static void main(String[] args) throws Exception {
 
-        int quantidade = 50000; // mude para cada tamanho
+        int quantidade = 50000; 
 
         String caminho = "arquivos/balanceado_" + quantidade + ".txt";
 
-        // Gera a ordem de inserção que produz árvore balanceada
-        // (divide o intervalo ao meio recursivamente)
         gerarOrdem(1, quantidade);
 
         BufferedWriter bw =

@@ -36,7 +36,6 @@ public class MedirTemposAVL {
             IColecao<Aluno> arvore =
                 new ArvoreAVL<>(new ComparadorAlunoMatricula());
 
-            // ── 1. Inserção ──────────────────────────────
             long inicio = System.nanoTime();
 
             BufferedReader br =
@@ -65,14 +64,12 @@ public class MedirTemposAVL {
             System.out.println("1. Inserção total: "
                 + (fim - inicio) + " ns");
 
-            // ── 2. Busca pelo elemento mais distante ─────
             inicio = System.nanoTime();
             arvore.pesquisar(ultimoInserido);
             fim = System.nanoTime();
             System.out.println("2. Busca (pior caso): "
                 + (fim - inicio) + " ns");
 
-            // ── 3. Busca por inexistente ──────────────────
             Aluno inexistente =
                 new Aluno(maiorMatricula + 1, "X", 0);
             inicio = System.nanoTime();
@@ -81,14 +78,12 @@ public class MedirTemposAVL {
             System.out.println("3. Busca inexistente: "
                 + (fim - inicio) + " ns");
 
-            // ── 4. Remoção ────────────────────────────────
             inicio = System.nanoTime();
             arvore.remover(ultimoInserido);
             fim = System.nanoTime();
             System.out.println("4. Remoção: "
                 + (fim - inicio) + " ns");
 
-            // ── 5. Quantidade ─────────────────────────────
             inicio = System.nanoTime();
             int qtd = arvore.quantidadeNos();
             fim = System.nanoTime();

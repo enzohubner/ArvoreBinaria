@@ -172,8 +172,8 @@ public class MainTreeMap {
                     "ERRO: entrada inválida! "
                     + "Digite apenas números onde pedido."
                 );
-                scanner.nextLine(); // limpa o buffer
-                opcao = -1; // evita sair do loop
+                scanner.nextLine(); 
+                opcao = -1; 
             } catch (Exception e) {
                 System.out.println(
                     "ERRO inesperado: " + e.getMessage()
