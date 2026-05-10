@@ -1,8 +1,7 @@
 package arvorebinaria;
 
-import java.util.Comparator;
-
 import colecao.IColecao;
+import java.util.Comparator;
 
 public abstract class ArvoreBinariaBase<T> implements IColecao<T>{
     protected final Comparator<T> comparador;     

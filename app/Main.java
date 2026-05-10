@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import colecao.IColecao;
 import arvorebinaria.ArvoreBinaria;
-import dominio.ComparadorAlunoMatricula;
 import dominio.ComparadorAlunoNome;
 import dominio.Aluno;
 

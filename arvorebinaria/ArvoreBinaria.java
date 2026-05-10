@@ -111,7 +111,7 @@ public class ArvoreBinaria<T> extends ArvoreBinariaBase<T> {
         else {
 
             if (atual.getEsquerda() == null &&
-                atual.getDireita() == null) {1
+                atual.getDireita() == null) {
 
                 return null;
             }
