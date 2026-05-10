@@ -39,6 +39,10 @@ public class ArvoreBinaria<T> extends ArvoreBinariaBase<T> {
                 adicionarRec(atual.getDireita(), valor)
             );
         }
+        else {
+            System.out.println("Esse aluno já existe.");
+        }
+
 
         return atual;
     }

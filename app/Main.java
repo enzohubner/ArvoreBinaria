@@ -1,11 +1,11 @@
 package app;
 
-import java.util.Scanner;
-
-import colecao.IColecao;
 import arvorebinaria.ArvoreBinaria;
-import dominio.ComparadorAlunoNome;
+import colecao.IColecao;
 import dominio.Aluno;
+import dominio.ComparadorAlunoMatricula;
+import dominio.ComparadorAlunoNome;
+import java.util.Scanner;
 
 public class Main {
 
@@ -14,7 +14,7 @@ public class Main {
         IColecao<Aluno> arvore;
 
         arvore = new ArvoreBinaria<Aluno>(
-            new ComparadorAlunoNome()
+            new ComparadorAlunoMatricula()
         );
 
         Aluno a;
