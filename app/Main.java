@@ -70,10 +70,6 @@ public class Main {
 
                         arvore.adicionar(a);
 
-                        System.out.println(
-                            "Aluno adicionado!"
-                        );
-
                         break;
 
                     case 2:

@@ -41,8 +41,10 @@ public class ArvoreBinaria<T> extends ArvoreBinariaBase<T> {
         }
         else {
             System.out.println("Esse aluno já existe.");
+            return atual;
         }
 
+        System.out.println("Aluno adicionado!");
 
         return atual;
     }
