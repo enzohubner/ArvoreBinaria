@@ -110,14 +110,12 @@ public class ArvoreBinaria<T> extends ArvoreBinariaBase<T> {
         }
         else {
 
-            // Caso 1: nó folha
             if (atual.getEsquerda() == null &&
-                atual.getDireita() == null) {
+                atual.getDireita() == null) {1
 
                 return null;
             }
 
-            // Caso 2: um filho
             if (atual.getEsquerda() == null) {
                 return atual.getDireita();
             }
@@ -126,7 +124,6 @@ public class ArvoreBinaria<T> extends ArvoreBinariaBase<T> {
                 return atual.getEsquerda();
             }
 
-            // Caso 3: dois filhos
             No<T> menorDireita = menorValor(
                 atual.getDireita()
             );
