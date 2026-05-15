@@ -83,32 +83,53 @@ public class MainTreeSet {
                             System.out.println("Árvore vazia!");
                         } else {
                             List<Aluno> lista = new ArrayList<>(arvore);
-                            int meio = lista.size() / 2;
-                            int meioMatricula = lista.get(meio).getMatricula();
+                            // int meio = lista.size() / 2;
+                            // int meioMatricula = lista.get(meio).getMatricula();
 
-                            System.out.println(lista.get(meio));
+                            // System.out.println(lista.get(meio));
 
-                            // fatiando 
-                            List<Aluno> esquerda = lista.subList(0, meio);
-                            List<Aluno> direita = lista.subList(meio + 1, lista.size());
+                            // int nivel = 0;
+                            // for (Aluno aluno : lista) {
+                            //     recursao(aluno, meioMatricula);
+                            //     nivel++;
+                            //     if (nivel == 2) {
+                            //         meioMatricula = aluno.getMatricula();
+                            //         recursao(aluno, meioMatricula);
+                            //         nivel = 0;
+                            //     }
+                            // }
 
-                            // meio das novas listas
-                            if (!esquerda.isEmpty()) {
-                                Aluno filhoEsquerda = esquerda.get(esquerda.size() / 2);
-                                recursao(filhoEsquerda, meioMatricula);
+                            // nível 1: 1 nó  (o meio)
+                            // nível 2: 2 nós (meios da esquerda e direita)
+                            // nível 3: 4 nós ...
+                            List<List<Aluno>> nivelAtual = new ArrayList<>();
+                            nivelAtual.add(lista);
+
+                            while (!nivelAtual.isEmpty()) {
+                                List<List<Aluno>> proximoNivel = new ArrayList<>();
+                                
+                                for (List<Aluno> subNivel : nivelAtual) {
+                                    int meio = subNivel.size() / 2;
+                                    System.out.print(subNivel.get(meio) + "   ");  
+                                    
+                                    // fatiando a lista em esquerda e direita
+                                    List<Aluno> esq = subNivel.subList(0, meio); 
+                                    List<Aluno> dir = subNivel.subList(meio + 1, subNivel.size()); 
+
+                                    if (!esq.isEmpty()) proximoNivel.add(esq);
+                                    if (!dir.isEmpty()) proximoNivel.add(dir);
+                                }
+                                System.out.println();
+                                nivelAtual = proximoNivel;
                             }
 
-                            if (!direita.isEmpty()) {
-                                Aluno filhoDireita = direita.get(direita.size() / 2);
-                                recursao(filhoDireita, meioMatricula);
-                            }
-                            System.out.println();
                         }
 
                         break;
 
                     case 5:
                         System.out.println("Quantidade de alunos: " + arvore.size());
+
                         break;
 
                     case 0:
@@ -130,11 +151,11 @@ public class MainTreeSet {
         scanner.close();
     }
 
-    private static void recursao(Aluno aluno, int meio) {
-        if (aluno.getMatricula() < meio){
-            System.out.print(aluno + " --- ");
-        } else if (aluno.getMatricula() > meio) {   
-            System.out.print(aluno + "     ");
-        }
-    }
+    // private static void recursao(Aluno aluno, int meio) {
+    //     if (aluno.getMatricula() < meio){
+    //         System.out.print(aluno + " --- ");
+    //     } else if (aluno.getMatricula() > meio) {   
+    //         System.out.print(aluno + "     ");
+    //     }
+    // }
 }

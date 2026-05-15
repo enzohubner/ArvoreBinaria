@@ -1,5 +1,6 @@
 package app;
 
+import arvorebinaria.ArvoreAVL;
 import arvorebinaria.ArvoreBinaria;
 import colecao.IColecao;
 import dominio.Aluno;
@@ -31,8 +32,9 @@ public class MedirTempos {
             System.out.println("Arquivo: " + caminho);
             System.out.println("=============================");
 
+            // IColecao<Aluno> arvore = new ArvoreBinaria<>(new ComparadorAlunoMatricula());
             IColecao<Aluno> arvore =
-                new ArvoreBinaria<>(new ComparadorAlunoMatricula());
+                new ArvoreAVL<>(new ComparadorAlunoMatricula());
 
             long inicio = System.nanoTime();
 
